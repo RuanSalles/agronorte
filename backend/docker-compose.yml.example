@@ -26,7 +26,7 @@ services:
 
   # Nginx
   agronote-nginx:
-    image: webdevops/php-nginx-dev:7.4
+    image: webdevops/php-nginx:8.0
     container_name: agronote-nginx
     networks:
       - internal
@@ -56,7 +56,7 @@ services:
     expose:
       - 9090
     ports:
-      - 8080:80
+      - "8080:80"
 
   # MySQL
   agronote-mysql:
@@ -74,7 +74,7 @@ services:
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
     ports:
-      - 3306:3306
+      - "3306:3306"
 
   # Redis
   agronote-redis:
@@ -86,11 +86,11 @@ services:
     volumes:
       - agronote-redis_data:/data
     ports:
-      - 6379:6379
+      - "6379:6379"
 
   # Queue SupervisorD
   agronote-queue:
-    image: webdevops/php-nginx:7.4
+    image: webdevops/php-nginx:8.0
     container_name: agronote-queue
     working_dir: /var/www/app
     networks:
